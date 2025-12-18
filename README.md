@@ -58,7 +58,9 @@ source /opt/ros/humble/setup.bash
 mkdir -p ~/nav2_ws/src
 cd ~/nav2_ws/src
 git clone https://github.com/tonitonitonitoni/asimov2026.git
+mv asimov2026 sam_bot_description
 ```
+
 
 3) Install package dependencies via rosdep:
 ```bash
