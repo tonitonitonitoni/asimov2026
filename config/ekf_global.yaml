@@ -1,0 +1,42 @@
+ekf_global:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.1
+
+    two_d_mode: true
+
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: map
+
+    # =========================================================
+    # GPS → ENU odometry from navsat_transform_node
+    # =========================================================
+    gps0: /gps/odom
+    gps0_config: [true, true, false,    # x, y, ignore z
+                  false, false, false,  # orientation
+                  false, false, false,  # linear velocity
+                  false, false, false,  # angular velocity
+                  false, false, false]
+
+    # =========================================================
+    # Fuse local EKF output for smoothing
+    # =========================================================
+    odom0: /odometry/local
+    odom0_config: [true, true, false,     # x, y, ignore z
+                   true, true, true,      # orientation from IMU
+                   false, false, false,   # linear velocity
+                   false, false, true,    # yaw rate only
+                   false, false, false]
+
+    # Optional: fuse IMU orientation directly into the global filter
+    imu0: /demo/imu
+    imu0_config: [false, false, false,
+                  true,  true,  true,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]
+    imu0_remove_gravitational_acceleration: true

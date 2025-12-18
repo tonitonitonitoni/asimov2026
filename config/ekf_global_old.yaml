@@ -1,0 +1,37 @@
+ekf_global:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.1
+    two_d_mode: true
+
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: map
+
+    # ---- GPS (ENU) ----
+    gps0: /gps/odom
+    gps0_config: [true, true, false, 
+                  false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]
+
+    # ---- Feed local filtered odom ----
+    odom0: /odometry/filtered
+    odom0_config: [
+      true, true, false,          # pos
+      true, true, true,          # orientation
+      false, false, false,       # linear vel (optional)
+      false, false, true,       # ang vel (optional)
+      false, false, false]        # accel
+    
+    # ---- Optional: IMU ----
+    imu0: /demo/imu
+    imu0_config: [false, false, false,
+                  true,  true,  true,
+                  false, false, false,
+                  false, false, false,
+                  false, false, false]

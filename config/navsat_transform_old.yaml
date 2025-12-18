@@ -1,0 +1,17 @@
+navsat_transform:
+  ros__parameters:
+    frequency: 30.0
+    delay: 0.0
+    magnetic_declination_radians: 0.0
+    yaw_offset: 0.0
+
+    publish_filtered_gps: true
+
+    base_link_frame: base_link
+    world_frame: map
+
+    imu0: /demo/imu
+    odom0: /odometry/local
+    gps0: /gps/fix_corrected
+    publish_tf: false
+

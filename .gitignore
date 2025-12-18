@@ -1,0 +1,23 @@
+# Build artifacts
+build/
+install/
+log/
+
+# ROS
+*.bag
+*.bag.active
+*.bag.metadata.yaml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

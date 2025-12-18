@@ -1,0 +1,84 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Views
+    Name: Views
+
+Visualization Manager:
+  Class: ""
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Name: Interact
+    - Class: rviz_default_plugins/MoveCamera
+      Name: MoveCamera
+    - Class: rviz_default_plugins/Select
+      Name: Select
+    - Class: rviz_default_plugins/Measure
+      Name: Measure
+
+  Displays:
+
+    # --- 1. Robot Model ----------------------------------------
+    - Class: rviz_default_plugins/RobotModel
+      Name: Robot Model
+      Enabled: true
+      Robot Description: robot_description
+      Alpha: 1.0
+
+    # --- 2. TF ---------------------------------------------------
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Arrows: false
+      Show Axes: false
+
+    # --- 3. Global Path ------------------------------------------
+    - Class: rviz_default_plugins/Path
+      Name: Global Path
+      Enabled: true
+      Topic: /robot_path
+      Color: 25; 255; 0
+      Line Style: Lines
+      Line Width: 0.1
+
+    # --- 4. Satellite Imagery (AerialMap) ------------------------
+    - Class: rviz_satellite/AerialMap
+      Name: Aerial Map
+      Enabled: true
+
+      # IMPORTANT: use your corrected GPS topic
+      NavSatFix topic: /gps/fix_corrected
+
+      # This tells rviz_satellite to center automatically on GPS
+      Auto Center: true
+
+      # OpenStreetMap satellite imagery (no API key needed)
+      Object URI:
+        https://tile.openstreetmap.org/{z}/{x}/{y}.png
+
+      # Draw map under everything
+      Draw Under: true
+
+      Alpha: 1.0
+      Zoom: 18                # adjust if you want more/less zoom
+
+    # --- 5. Robot Pose (for debugging) ---------------------------
+    - Class: rviz_default_plugins/Pose
+      Name: Robot Pose
+      Topic: /tf
+      Enabled: false
+
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 20
+      Pitch: 0.5
+      Yaw: 0.5
+      Target Frame: map
